@@ -82,7 +82,7 @@
     <h1>Mines signal bot</h1>
 
     <!-- Ввод ID -->
-    <h2>Ingrese su ID</h2>
+    <h2 id="idLabel">Ingrese su ID</h2>
     <input type="text" id="idInput" placeholder="ID 1xcasino (10 dígitos)">
     <button onclick="verificarID()">Confirmar</button>
     <button id="signalBtn" onclick="mostrarMensaje()">Señal</button>
@@ -95,6 +95,7 @@
       const idValido = /^12\d{8}$/.test(id);
 
       if (idValido) {
+        document.getElementById("idLabel").style.display = "none";
         document.getElementById("idInput").style.display = "none";
         document.querySelector("button[onclick='verificarID()']").style.display = "none";
         document.getElementById("signalBtn").style.display = "inline-block";
