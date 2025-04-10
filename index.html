@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mines signal bot</title>
+  <style>
+    body {
+      background-color: #e0f0ff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      max-width: 350px;
+    }
+
+    #top-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #2c79b9;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #4aa9f3;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #358cd6;
+    }
+
+    #signalBtn {
+      display: none;
+    }
+
+    #message {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <!-- Твоё изображение сверху -->
+    <img id="top-image" src="image.png" alt="Logo del bot">
+
+    <!-- Заголовок -->
+    <h1>Mines signal bot</h1>
+
+    <!-- Ввод ID -->
+    <h2>Ingrese su ID</h2>
+    <input type="text" id="idInput" placeholder="ID (10 dígitos)">
+    <button onclick="verificarID()">Confirmar</button>
+    <button id="signalBtn" onclick="mostrarMensaje()">Señal</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function verificarID() {
+      const id = document.getElementById("idInput").value;
+      const idValido = /^12\d{8}$/.test(id);
+
+      if (idValido) {
+        document.getElementById("idInput").style.display = "none";
+        document.querySelector("button[onclick='verificarID()']").style.display = "none";
+        document.getElementById("signalBtn").style.display = "inline-block";
+        document.getElementById("message").textContent = "";
+      } else {
+        document.getElementById("message").textContent = "ID inválido. Debe comenzar con 12 y tener 10 dígitos.";
+      }
+    }
+
+    function mostrarMensaje() {
+      document.getElementById("message").textContent = "Recarga tu saldo con 4 dólares";
+    }
+  </script>
+
+</body>
+</html>
